@@ -13,53 +13,50 @@ _Proteja sua cadeia de suprimentos, entenda as dependências em seu ambiente, sa
 
 </header>
 
-## Passo 1: Revisar e adicionar dependências usando o gráfico de dependências
+## Passo 2: Habilitar e visualizar alertas do Dependabot
 
-_Bem-vindo ao "Proteja a cadeia de suprimentos do seu repositório"! :wave:_
+_Bom trabalho! :tada: Você adicionou e visualizou uma dependência usando o gráfico de dependências!_
 
-**Qual é a importância de proteger a cadeia de suprimentos do seu repositório?**: Com o uso acelerado de código aberto, a maioria dos projetos depende de centenas de dependências de código aberto. Isso representa uma questão de segurança [...]
+Dado o número de dependências que nosso repositório utiliza, manter essas dependências precisa se tornar uma tarefa automatizada. Manter nosso código seguro é uma prioridade, então a primeira coisa que precisamos fazer é configurar uma forma de sermos notificados quando uma dependência que estamos usando é vulnerável ou contém malware. Podemos fazer isso habilitando alertas do Dependabot.
 
-O GitHub oferece uma série de recursos para ajudá-lo a entender as dependências em seu ambiente, conhecer as vulnerabilidades dessas dependências e corrigi-las. Os recursos da cadeia de suprimentos no GitHub incluem:
+**O que são alertas do Dependabot?**: Alertas do Dependabot informam que seu código depende de um pacote inseguro. Esses alertas do Dependabot referenciam a [Base de Dados de Consultoria do GitHub](https://github.com/advisories), que contém uma lista de vulnerabilidades de segurança e malware conhecidos, agrupados em duas categorias: **Consultorias revisadas pelo GitHub** e **Consultorias não revisadas**.
 
-- Gráfico de dependências
-- Revisão de dependências
-- Alertas do Dependabot
-- Atualizações do Dependabot
-  - Atualizações de segurança do Dependabot
-  - Atualizações de versão do Dependabot
+Se seu código depende de um pacote que tem uma vulnerabilidade de segurança, isso pode causar uma série de problemas para o seu projeto ou para as pessoas que o utilizam. Você deve atualizar para uma versão segura do pacote o mais rápido possível. Se seu código utiliza malware, você precisa substituir o pacote por uma alternativa segura.
 
-**O que é um gráfico de dependências**: O gráfico de dependências é um resumo dos arquivos de manifesto e de bloqueio armazenados em um repositório e quaisquer dependências que são submetidas ao repositório usando o Depend[...]
+Vamos testar isso com nossa recém-adicionada dependência `follow-redirects`!
 
-- Dependências, os ecossistemas e pacotes dos quais depende
-- Dependentes, os repositórios e pacotes que dependem dele
+### :keyboard: Atividade 2.1: Visualizar consultorias de segurança na Base de Dados de Consultoria do GitHub
 
-### :keyboard: Atividade 1.1: Verificar se o gráfico de dependências está habilitado
+1. Navegue até a [Base de Dados de Consultoria do GitHub](https://github.com/advisories).
+2. Digite ou cole `follow-redirects` na caixa de pesquisa de consultorias.
+3. Clique em qualquer uma das consultorias encontradas para ver mais informações.
+4. Você verá os pacotes, impacto, patches, soluções alternativas e referências para a consultoria.
 
-**Recomendamos abrir outra aba do navegador para realizar as atividades a seguir, assim você pode manter estas instruções abertas para referência.**
+Observe a longa lista de consultorias para nossa dependência! Isso pode parecer assustador, mas na verdade é uma coisa boa. Significa que nossa dependência está sendo ativamente mantida e patches estão sendo disponibilizados para remover a vulnerabilidade. Se tivéssemos alertas do Dependabot habilitados, poderíamos receber alertas quando precisássemos atualizar uma dependência e agir prontamente para protegê-la.
 
-O gráfico de dependências está habilitado por padrão para todos os novos repositórios públicos. Se você estiver trabalhando em um repositório público, pode ir direto para "Atividade 1.2: Adicionar uma nova dependência e visualizar seu gráfico de dependências".
+Vamos habilitar alertas do Dependabot em nosso repositório!
+
+### :keyboard: Atividade 2.2: Habilitar alertas do Dependabot
 
 1. Navegue até a aba **Settings**.
-2. Clique em **Advanced Security**.
-3. Habilite **Dependency graph**.
+2. Exiba as configurações para **Advanced Security**.
+3. Habilite **Dependabot alerts**.
+4. **Aguarde cerca de 60 segundos para o Dependabot verificar se há alertas.**
+5. Navegue até a aba **Security**.
+6. Em "Vulnerability alerts" na barra lateral, selecione **Dependabot** para visualizar uma lista dos alertas do Dependabot para a branch padrão.
 
-### :keyboard: Atividade 1.2: Adicionar uma nova dependência e visualizar seu gráfico de dependências
+O Dependabot nos alertou sobre vulnerabilidades nas dependências que usamos. Também podemos usar o Dependabot para nos ajudar a resolver essas vulnerabilidades criando pull requests para atualizar a dependência para uma versão segura.
 
-1. Navegue até a aba **Code** e localize a pasta `code/src/AttendeeSite`.
-2. Adicione o seguinte conteúdo ao arquivo `package-lock.json` após a terceira chave `}` antes das duas últimas chaves.
-    ```
-    ,
-     "follow-redirects": {
-       "version": "1.14.1",
-       "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz",
-       "integrity": "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg=="
-     }
-    ```
-3. Navegue até a aba **Insights**.
-4. Selecione **Dependency graph** na barra de navegação lateral.
-5. Revise todas as dependências na aba **Dependencies**.
-6. Pesquise por `follow-redirects` e revise a nova dependência que você acabou de adicionar.
-    ![Captura de tela mostrando a dependência "follow-redirects".](https://user-images.githubusercontent.com/6351798/196288729-734e3319-c5d7-4f35-a19c-676c12f0e27d.png)
+Vamos ver como isso funcionaria usando o Dependabot para criar um pull request para um dos alertas!
+
+### :keyboard: Atividade 2.3: Criar um pull request com base em um alerta do Dependabot
+
+1. Na lista de alertas do Dependabot, clique em "Prototype Pollution in minimist" para exibir mais informações.
+2. Clique no botão **Create Dependabot security update** para criar um pull request para atualizar a dependência. Isso pode levar até 2 minutos.
+3. Quando o pull request estiver aberto, a página de alerta será atualizada para mostrar um botão **Review security update**.
+4. Clique no botão **Review security update** para exibir o pull request.
+   - Você pode visualizar o pull request e a aba **Files changed** para revisar a atualização.
+5. Navegue de volta para a aba **Conversation** e faça o merge do pull request.
 
 Espere cerca de 20 segundos e então atualize esta página (a página onde você está seguindo as instruções). [GitHub Actions](https://docs.github.com/en/actions) será atualizado automaticamente para exibir o próximo passo.
 
