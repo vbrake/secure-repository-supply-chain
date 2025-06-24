@@ -13,50 +13,55 @@ _Proteja sua cadeia de suprimentos, entenda as dependências em seu ambiente, sa
 
 </header>
 
-<!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
--->
+## Passo 1: Revisar e adicionar dependências usando o gráfico de dependências
 
-## Bem-vindo
+_Bem-vindo ao "Proteja a cadeia de suprimentos do seu repositório"! :wave:_
 
-O GitHub ajuda você a proteger sua cadeia de suprimentos, desde entender as dependências em seu ambiente, até saber sobre vulnerabilidades nessas dependências e corrigi-las.
+**Qual é a importância de proteger a cadeia de suprimentos do seu repositório?**: Com o uso acelerado de código aberto, a maioria dos projetos depende de centenas de dependências de código aberto. Isso representa uma questão de segurança [...]
 
-- **Para quem é este curso**: Desenvolvedores, Engenheiros DevOps, Engenheiros de Confiabilidade de Sites, especialistas em segurança
-- **O que você aprenderá**: Como visualizar dependências do repositório, visualizar alertas do Dependabot e habilitar atualizações de segurança e versão do Dependabot
-- **O que você construirá**: Dependências do repositório, alertas do Dependabot, pull requests para corrigir dependências e atualizações de versão
-- **Pré-requisitos**: Nenhum
-- **Tempo**: Este curso pode ser concluído em menos de uma hora
+O GitHub oferece uma série de recursos para ajudá-lo a entender as dependências em seu ambiente, conhecer as vulnerabilidades dessas dependências e corrigi-las. Os recursos da cadeia de suprimentos no GitHub incluem:
 
-Neste curso, você explorará:
+- Gráfico de dependências
+- Revisão de dependências
+- Alertas do Dependabot
+- Atualizações do Dependabot
+  - Atualizações de segurança do Dependabot
+  - Atualizações de versão do Dependabot
 
-1. Gráfico de dependências
-2. Alertas de dependências
-3. Atualizações de segurança de dependências
-4. Atualizações de versões de dependências
+**O que é um gráfico de dependências**: O gráfico de dependências é um resumo dos arquivos de manifesto e de bloqueio armazenados em um repositório e quaisquer dependências que são submetidas ao repositório usando o Depend[...]
 
-### Como iniciar este curso
+- Dependências, os ecossistemas e pacotes dos quais depende
+- Dependentes, os repositórios e pacotes que dependem dele
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'review-pull-requests',
-  owner: '@me',
-  name: 'skills-review-pull-requests',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+### :keyboard: Atividade 1.1: Verificar se o gráfico de dependências está habilitado
 
-[![start-course](https://raw.githubusercontent.com/dev-pods/introduction-to-secret-scanning/873eb13decfe79fd486ff84bd97de0dab4912d9a/images/botao.svg)](https://github.com/new?template_owner=dev-pods&template_name=secure-repository-supply-chain&owner=%40me&name=secure-repository-supply-chain&description=GitHub+Habilidades:+Introdução+para+Supply+Chain&visibility=public)
+**Recomendamos abrir outra aba do navegador para realizar as atividades a seguir, assim você pode manter estas instruções abertas para referência.**
 
-1. Clique com o botão direito em **Iniciar curso** e abra o link em uma nova aba.
-2. Na nova aba, a maioria dos prompts será preenchida automaticamente para você.
-   - Para o proprietário, escolha sua conta pessoal ou uma organização para hospedar o repositório.
-   - Recomendamos criar um repositório público, pois repositórios privados [usarão minutos do Actions](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Role para baixo e clique no botão **Criar repositório** na parte inferior do formulário.
-3. Após a criação do seu novo repositório, espere cerca de 20 segundos e atualize a página. Siga as instruções passo a passo no README do novo repositório.
+O gráfico de dependências está habilitado por padrão para todos os novos repositórios públicos. Se você estiver trabalhando em um repositório público, pode ir direto para "Atividade 1.2: Adicionar uma nova dependência e visualizar seu gráfico de dependências".
+
+1. Navegue até a aba **Settings**.
+2. Clique em **Advanced Security**.
+3. Habilite **Dependency graph**.
+
+### :keyboard: Atividade 1.2: Adicionar uma nova dependência e visualizar seu gráfico de dependências
+
+1. Navegue até a aba **Code** e localize a pasta `code/src/AttendeeSite`.
+2. Adicione o seguinte conteúdo ao arquivo `package-lock.json` após a terceira chave `}` antes das duas últimas chaves.
+    ```
+    ,
+     "follow-redirects": {
+       "version": "1.14.1",
+       "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz",
+       "integrity": "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg=="
+     }
+    ```
+3. Navegue até a aba **Insights**.
+4. Selecione **Dependency graph** na barra de navegação lateral.
+5. Revise todas as dependências na aba **Dependencies**.
+6. Pesquise por `follow-redirects` e revise a nova dependência que você acabou de adicionar.
+    ![Captura de tela mostrando a dependência "follow-redirects".](https://user-images.githubusercontent.com/6351798/196288729-734e3319-c5d7-4f35-a19c-676c12f0e27d.png)
+
+Espere cerca de 20 segundos e então atualize esta página (a página onde você está seguindo as instruções). [GitHub Actions](https://docs.github.com/en/actions) será atualizado automaticamente para exibir o próximo passo.
 
 <footer>
 
