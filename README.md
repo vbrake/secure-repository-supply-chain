@@ -13,49 +13,34 @@ _Proteja sua cadeia de suprimentos, entenda as dependências em seu ambiente, sa
 
 </header>
 
-## Passo 4: Habilitar e acionar atualizações de versão do Dependabot
+## Finalizar
 
-_Muito bem!_ :partying_face:
+_Parabéns, você completou este curso!_
 
-Agora você automatizou o processo para o Dependabot alertá-lo sobre vulnerabilidades em suas dependências e criar pull requests para atualizá-las para versões seguras! Neste ponto, você só precisa revisar o pull request e, em seguida, fazer o merge para ficar em dia com os problemas de segurança das dependências.
+<img src="https://octodex.github.com/images/welcometocat.png" alt=celebrate width=300 align=right>
 
-O recurso de atualizações de segurança ajuda a automatizar o processo de resolver alertas, mas e quanto a apenas manter-se atualizado com as atualizações de versão? Também podemos automatizar a geração de pull requests para versões atualizadas das dependências usando o recurso de atualizações de versão do Dependabot.
+Aqui está um resumo de todas as tarefas que você realizou em seu repositório:
 
-**O que são atualizações de versão do Dependabot?**: Além dos alertas de segurança, o Dependabot também pode tirar o esforço de manter suas dependências. Você pode usá-lo para garantir que seu repositório acompanhe automaticamente os últimos lançamentos dos pacotes e aplicações dos quais depende. Semelhante aos alertas de segurança, o Dependabot identificará uma dependência desatualizada e criará um pull request para atualizar o manifesto para a versão mais recente da dependência.
+- Você aprendeu a visualizar e usar o gráfico de dependências.
+- Você aprendeu a habilitar e usar alertas do Dependabot.
+- Você aprendeu a habilitar e usar atualizações de segurança do Dependabot.
+- Você aprendeu a habilitar e usar atualizações de versão do Dependabot.
 
-Vamos ver como isso funciona!
+### Aprendizado adicional e recursos
 
-### :keyboard: Atividade 4.1: Habilitar e acionar atualizações de versão do Dependabot
+- [Gráfico de dependências](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph)
+- [Explorando as dependências de um repositório](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository)
+- [Sobre a segurança da cadeia de suprimentos](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security)
+- [Alertas do Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)
+- [Base de Dados de Consultoria do GitHub](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/browsing-security-advisories-in-the-github-advisory-database)
 
-1. Navegue até a aba **Settings** e selecione **Advanced Security**.
-2. Localize "Dependabot version updates" e clique em **Configure** para abrir um novo editor de arquivos com conteúdo pré-preenchido. O arquivo é chamado `dependabot.yml`.
-3. Observe que o arquivo está pré-preenchido para atualizar as ações do GitHub no repositório, o ecossistema de pacotes `github-actions`.
-4. Copie as linhas que definem as atualizações das ações do GitHub e as adicione ao arquivo.
-5. Edite sua cópia do conteúdo:
-   - Altere o `package-ecosystem` para `nuget`.
-   - Altere o `directory` para `/code/`.
-   - Altere o `interval` para `weekly`.
-   
-   O arquivo `dependabot.yml` deve agora ficar assim.
-   ```yaml
-   version: 2
-   updates:
-     - package-ecosystem: "github-actions"
-       directory: "/"
-       schedule:
-         interval: "monthly"
-     - package-ecosystem: "nuget"
-       directory: "/code/"
-       schedule:
-         interval: "weekly"
-    ```
-6. Faça o commit das suas alterações diretamente na branch `main`.
+### O que vem a seguir?
 
-Você agora configurou as atualizações de versão do Dependabot para executar e verificar atualizações da seguinte forma:
-- Verificar uma vez por mês por atualizações das ações do GitHub e criar pull requests para atualizar quaisquer que estejam desatualizadas.
-- Verificar uma vez por semana por atualizações de pacotes .NET e criar pull requests para atualizar quaisquer que estejam desatualizadas. Por padrão, essa verificação é executada na segunda-feira. Para executar a verificação em um dia diferente, veja [schedule.day](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#scheduleday).
-
-Espere cerca de 20 segundos e então atualize esta página (a página onde você está seguindo as instruções). [GitHub Actions](https://docs.github.com/en/actions) será atualizado automaticamente para exibir o próximo passo.
+- Saiba mais sobre como proteger sua cadeia de suprimentos lendo: [Protegendo sua cadeia de suprimentos](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security).
+- [Adoraríamos ouvir o que você achou deste curso](https://github.com/skills/.github/discussions).
+- [Aprenda outra habilidade do GitHub](https://github.com/skills).
+- [Leia a documentação de Introdução ao GitHub](https://docs.github.com/en/get-started).
+- Para encontrar projetos para contribuir, confira [GitHub Explore](https://github.com/explore).
 
 <footer>
 
